@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Développez un tableau de bord d'analytics avec React.
+
+## This project runs using an API. To launch the API, go to the following repo and follow the instructions (port used by the API must be 3000) :
+[SportSee backend](https://github.com/Alphasud/P9-front-end-dashboard)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
