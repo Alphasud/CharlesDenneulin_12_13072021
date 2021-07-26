@@ -1,0 +1,82 @@
+.user-page {
+    width: 80%;
+    color: black;
+    margin-top: 2.5rem;
+    margin-left: 15rem;
+
+    &__info {
+        background-color: aqua;
+        font-size: 2.3rem;
+        &__name {
+            color: red;
+        }
+        p {
+            margin-top: .5rem;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__graph {
+        height: 60rem;
+        background-color: beige;
+        display: flex;
+        &__left {
+            background-color: blueviolet;
+            width: 80%;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        &__right {
+            width: 20%;
+            background-color: yellow;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.user-page__graph__left__bottom {
+    background-color: cadetblue;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    &__time-chart {
+        background-color: beige;
+        width: 32%;
+        margin: 1% 0 1% 1%;
+    }
+    &__score-chart {
+        background-color: beige;
+        width: 32%;
+        margin: 1% 0 1% 1%;
+       
+    }
+    &__radar-chart {
+        background-color: beige;
+        width: 32%;
+        margin: 1% 0 1% 1%;
+    }
+}
+
+.user-page__graph__right {
+    &__calories {
+        background-color: coral;
+        height: 25%;
+        margin: 1% 1% 1% 1%;
+    }
+    &__proteins {
+        background-color: coral;
+        height: 25%;
+        margin: 0 1% 1% 1%;
+    }
+    &__carbohydrates {
+        background-color: coral;
+        height: 25%;
+        margin: 0 1% 1% 1%;
+    }
+    &__fat {
+        background-color: coral;
+        height: 25%;
+        margin: 0 1% 1% 1%;
+    }
+}
