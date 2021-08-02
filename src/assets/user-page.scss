@@ -5,8 +5,8 @@
     margin-left: 15rem;
 
     &__info {
-        background-color: aqua;
         font-size: 2.3rem;
+        margin-bottom: 5rem;
         &__name {
             color: red;
         }
@@ -17,14 +17,12 @@
     }
 
     &__graph {
-        height: 60rem;
-        background-color: beige;
+        height: 55rem;
         display: flex;
         &__left {
-            background-color: blueviolet;
             width: 80%;
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
         }
         &__right {
             width: 20%;
@@ -34,16 +32,42 @@
         }
     }
 }
+.user-page__graph__left__activity-chart {
+    height: 55%;
+    margin-bottom: 2rem;
+    background-color: #fbfbfb;
+    position: relative;
+}
+
+.user-page__graph__left__activity-chart__title {
+    color: #000;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    font-size: 1.2rem;
+    
+}
+
 
 .user-page__graph__left__bottom {
-    background-color: cadetblue;
     width: 100%;
     height: 40%;
     display: flex;
     &__time-chart {
-        background-color: beige;
-        width: 32%;
+        position: relative;
+        background-color: #ff0000;
+        border-radius: 5px;
+        width: 20rem;
         margin: 1% 0 1% 1%;
+        box-sizing: content-box;
+        padding: 0 0.5rem 0 0.5rem;
+    }
+    &__time-chart__title {
+        position: absolute;
+        font-size: 1.5rem;
+        top: 2rem;
+        left: 2rem;
+        color: rgba(255, 255, 255, 0.6);
     }
     &__score-chart {
         background-color: beige;
@@ -80,3 +104,40 @@
         margin: 0 1% 1% 1%;
     }
 }
+
+
+////CUSTOM TOOLTIPS TIME CHARTS
+.label {
+    padding: .5rem;
+    background-color: #fff;
+}
+
+/////ACTIVITY CHART CUSTOM LEGEND
+.legend {
+    position: absolute;
+    top: -7rem;
+    right: 2rem;
+    display: flex;
+}
+
+.header-legend {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.circle-red {
+  background: #ff0000;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+.circle-black {
+  background: #000;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
