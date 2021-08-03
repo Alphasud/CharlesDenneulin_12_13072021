@@ -1,8 +1,9 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import React, { useEffect, useState } from "react";
-import { getUserActivity } from "../services/userActivity";
+import { getUserActivity } from "../Services/userActivity";
 import { useParams } from "react-router-dom";
 import CustomizedLegendActivity from './CustomizedLegendActivity';
+import CustomTooltipActivity from './CustomTooltipActivity';
 
 
 function UserActivityChart() {
@@ -83,12 +84,13 @@ function UserActivityChart() {
                     hide={true}
                     domain={[minCalories, maxCalories]}
                 />
-                <Tooltip />
+                <Tooltip
+                  cursor={{ fill: "#dfdfdf" }}
+                  content={<CustomTooltipActivity />}
+                />
+        
                         <Legend
-                          iconType="circle"
-                          verticalAlign="top"
-          align="right"
-          content={<CustomizedLegendActivity />}
+                          content={<CustomizedLegendActivity />}
                         />
                         <Bar
                             yAxisId="kilo"

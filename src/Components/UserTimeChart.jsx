@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getUserTime } from "../services/userTime";
+import { getUserTime } from "../Services/userTime";
 import { useParams } from "react-router-dom";
-import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import CustomTooltipTime from './CustomToolTipTime';
 import CustomCursorTime from './CustomCursorTime';
 
@@ -38,7 +38,8 @@ function UserTimeChart() {
   
 
   return <article className="user-page__graph__left__bottom__time-chart">
-        <h2 className="user-page__graph__left__bottom__time-chart__title">Durée moyenne des sessions</h2>
+    <h2 className="user-page__graph__left__bottom__time-chart__title">Durée moyenne des sessions</h2>
+    <ResponsiveContainer width="100%" height="100%">
     <LineChart width={200} height={200} data={timeData} margin={{ top: 5, right: 0, bottom: 0, left: 5 }}>
           <defs>
             <linearGradient id="lineColor" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -72,13 +73,15 @@ function UserTimeChart() {
                 tickLine={false}
                 axisLine={false}
                 tick={{ fontSize: 12 }}
+                padding={{ left: 10, right: 10 }}
             />
 
             <YAxis
                 hide={true}
                 domain={[min, max]}
             />
-  </LineChart>
+      </LineChart>
+      </ResponsiveContainer>
     </article>
 }
 
