@@ -38,7 +38,7 @@ function UserTimeChart() {
   
 
   return <article className="user-page__graph__left__bottom__time-chart">
-    <h2 className="user-page__graph__left__bottom__time-chart__title">Durée moyenne des sessions</h2>
+    <h2 className="user-page__graph__left__bottom__time-chart__title">Durée moyenne des<br></br>sessions</h2>
     <ResponsiveContainer width="100%" height="100%">
     <LineChart width={200} height={200} data={timeData} margin={{ top: 5, right: 0, bottom: 0, left: 5 }}>
           <defs>

@@ -27,9 +27,6 @@ function UserRadarChart() {
     performance.splice(4, 1, { value: 220, kind: "Vitesse" });
     performance.splice(5, 1, { value: 110, kind: "Intensité" });
     
-    console.log(performance);
-
-
     return <article className="user-page__graph__left__bottom__radar-chart">
             <ResponsiveContainer width="100%" height="100%">
                     <RadarChart outerRadius={70} data={performance} >
