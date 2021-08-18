@@ -4,33 +4,46 @@ import UserTimeChart from "./UserTimeChart";
 import UserScoreChart from "./UserScoreChart";
 import UserRadarChart from "./UserRadarChart";
 import KeyData from "./KeyData";
-import { getUser } from "../Services/user";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { fetchURLs } from "../Services/fetchURLs";
+import ErrorPage from "./ErrorPage";
 
 function UserPage() {
 
     const [user, setUser] = useState([]);
+    const [error, setError] = useState([])
     const idParams = useParams().id;
     
     useEffect(() => {
         let mounted = true;
-        getUser(idParams)
-        .then(items => {
-        if(mounted) {
-         setUser([items.data])
-        }
-        })
-            return () => mounted = false;
-    }, [idParams])
+        fetchURLs(idParams)
+            .then(items => {
+                if (mounted) {
+                    setUser([items[0].data])
+                }
+            })
+            .catch(items => {
+                if (mounted) {
+                    setError(items.message)
+                }
+            })
+        return () => mounted = false;
+    }, [idParams, error]);
 
     const firstName = user.map(el => el.userInfos.firstName.toString());
     const calories = parseInt(user.map(el => el.keyData.calorieCount));
     const formattedCalories = new Intl.NumberFormat('en-EN').format(calories);
     const protein = parseInt(user.map(el => el.keyData.proteinCount));
     const carbohydrate = parseInt(user.map(el => el.keyData.carbohydrateCount));
-    const lipid = parseInt(user.map(el => el.keyData.lipidCount));    
-
+    const lipid = parseInt(user.map(el => el.keyData.lipidCount));
+    console.log(error);
+    if (error.length === 0) {
+        console.log('YES');
+    }
+    if (!error.length === 0) {
+        return <ErrorPage />;
+    }
     return <section className="user-page">
         <UserInfo
             userName={firstName}
@@ -68,6 +81,7 @@ function UserPage() {
             </div>
         </div>
     </section>
+
 }
 
 export default UserPage;

@@ -1,23 +1,29 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
 import React, { useEffect, useState } from "react";
-import { getUserPerformance } from "../Services/userPerformance";
+import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
 
 function UserRadarChart() {
 
     const [userPerformance, setUserPerformance] = useState([]);
+    const [error, setError] = useState([]);
     const idParams = useParams().id;
     
     useEffect(() => {
         let mounted = true;
-        getUserPerformance(idParams)
+        fetchURLs(idParams)
             .then(items => {
                 if (mounted) {
-                    setUserPerformance([items.data])
+                    setUserPerformance([items[2].data])
+                }
+            })
+            .catch(items => {
+                if (mounted) {
+                    setError(items.message)
                 }
             })
         return () => mounted = false;
-    }, [idParams])
+    }, [idParams, error]);
 
     const performance = userPerformance.flatMap(el => el.data);
     performance.splice(0, 1, { value: 200, kind: "Cardio" });

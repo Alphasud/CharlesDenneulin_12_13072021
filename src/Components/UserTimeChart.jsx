@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { getUserTime } from "../Services/userTime";
+import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
 import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import CustomTooltipTime from './CustomToolTipTime';
 import CustomCursorTime from './CustomCursorTime';
 
-
-
-
 function UserTimeChart() {
   const [userTime, setUserTime] = useState([]);
+  const [error, setError] = useState([]);
   const idParams = useParams().id;
     
   useEffect(() => {
     let mounted = true;
-    getUserTime(idParams)
+    fetchURLs(idParams)
       .then(items => {
         if (mounted) {
-          setUserTime([...items.data.sessions])
+          setUserTime([...items[3].data.sessions])
+        }
+      })
+      .catch(items => {
+        if (mounted) {
+          setError(items.message)
         }
       })
     return () => mounted = false;
-  }, [idParams])
+  }, [idParams, error]);
 
   const arrayTimes = userTime.map(el => el.sessionLength);
   const min = Math.min(...arrayTimes) / 2;

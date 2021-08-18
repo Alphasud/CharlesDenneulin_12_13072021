@@ -1,5 +1,5 @@
 import { Rectangle } from 'recharts';
-import useMousePosition from './GetMousePosition';
+import useMousePosition from '../Services/getMousePosition';
 
 const CustomCursorTime = () => {
 const { x } = useMousePosition();

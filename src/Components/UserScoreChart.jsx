@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { getUserScore } from "../Services/userScore";
+import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
 import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
-
 
 function UserScoreChart() {
 
     const [userScore, setUserScore] = useState([]);
+    const [error, setError] = useState([]);
     const idParams = useParams().id;
     
     useEffect(() => {
         let mounted = true;
-        getUserScore(idParams)
+        fetchURLs(idParams)
             .then(items => {
                 if (mounted) {
-                   items.data.todayScore ? setUserScore([items.data.todayScore]) : setUserScore([items.data.score]);
+                   items[0].data.todayScore ? setUserScore([items[0].data.todayScore]) : setUserScore([items[0].data.score]);
+                }
+            })
+            .catch(items => {
+                if (mounted) {
+                    setError(items.message)
                 }
             })
         return () => mounted = false;
-    }, [idParams]);
+    }, [idParams, error]);
+
 
     const formatedScore = [
        { name: 'score', value: userScore*100, fill:"#e60000" }

@@ -1,26 +1,31 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import React, { useEffect, useState } from "react";
-import { getUserActivity } from "../Services/userActivity";
+import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
 import CustomizedLegendActivity from './CustomizedLegendActivity';
 import CustomTooltipActivity from './CustomTooltipActivity';
 
-
 function UserActivityChart() {
 
-    const [userActivity, setUserActivity] = useState([]);
+  const [userActivity, setUserActivity] = useState([]);
+  const [error, setError] = useState([]);
     const idParams = useParams().id;
     
-    useEffect(() => {
-        let mounted = true;
-        getUserActivity(idParams)
-        .then(items => {
-        if(mounted) {
-         setUserActivity([items.data])
+  useEffect(() => {
+    let mounted = true;
+    fetchURLs(idParams)
+      .then(items => {
+        if (mounted) {
+          setUserActivity([items[1].data])
         }
-        })
-            return () => mounted = false;
-    }, [idParams])
+      })
+      .catch(items => {
+        if (mounted) {
+          setError(items.message)
+        }
+      })
+    return () => mounted = false;
+  }, [idParams, error]);
 
   const sessions = userActivity.flatMap(el => el.sessions);
   sessions.splice(0, 1, { day: "1", kilogram: 70, calories: 240 });
@@ -44,7 +49,6 @@ function UserActivityChart() {
     maxKilo = Math.max(...arrayKilo) + 1;
     minCalories = Math.min(...arrayCalories) - 10;
     maxCalories = Math.max(...arrayCalories) + 10;
-    
   
   return <article className="user-page__graph__left__activity-chart">
       <h2 className="user-page__graph__left__activity-chart__title">Activité quotidienne</h2>
