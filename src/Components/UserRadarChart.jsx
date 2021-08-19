@@ -2,6 +2,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContain
 import React, { useEffect, useState } from "react";
 import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function UserRadarChart() {
 
@@ -9,6 +10,9 @@ function UserRadarChart() {
     const [error, setError] = useState([]);
     const idParams = useParams().id;
     
+    /**
+   * Update the state with the fetched data
+   */
     useEffect(() => {
         let mounted = true;
         fetchURLs(idParams)
@@ -44,6 +48,12 @@ function UserRadarChart() {
             </ResponsiveContainer>
         </article>
 }
+
+UserRadarChart.propTypes = {
+    idParams: PropTypes.number,
+    userPerformance: PropTypes.array,
+    performance: PropTypes.array
+};
 
 export default UserRadarChart;
 

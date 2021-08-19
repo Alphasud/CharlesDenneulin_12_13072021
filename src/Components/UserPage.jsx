@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchURLs } from "../Services/fetchURLs";
 import ErrorPage from "./ErrorPage";
+import PropTypes from 'prop-types';
 
 function UserPage() {
 
@@ -15,6 +16,9 @@ function UserPage() {
     const [error, setError] = useState();
     const idParams = useParams().id;
     
+    /**
+   * Update the state with the fetched data
+   */
     useEffect(() => {
         let mounted = true;
         fetchURLs(idParams)
@@ -78,5 +82,10 @@ function UserPage() {
     </section>
 
 }
+
+UserPage.propTypes = {
+    idParams: PropTypes.number,
+    user: PropTypes.array
+};
 
 export default UserPage;

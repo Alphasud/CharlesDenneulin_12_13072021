@@ -1,4 +1,4 @@
-export default function CustomTooltipTime({ active, payload, label }) {
+export default function CustomTooltipTime({ active, payload }) {
   if (active && payload && payload.length) {
     return (
       <div className="custom-tooltip">

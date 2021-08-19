@@ -1,3 +1,9 @@
+/**
+ * <fetch datas from API's endpoints and return them into an array>
+ * @param   {number} id <id of user>
+ * @return  {array}     <array of data relative to user>
+ */
+
 async function fetchURLs(id) {
     let allDatas = [];
     try {

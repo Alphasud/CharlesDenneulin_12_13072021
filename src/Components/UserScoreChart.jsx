@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
 import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+import PropTypes from 'prop-types';
 
 function UserScoreChart() {
 
@@ -9,6 +10,9 @@ function UserScoreChart() {
     const [error, setError] = useState([]);
     const idParams = useParams().id;
     
+     /**
+   * Update the state with the fetched data
+   */
     useEffect(() => {
         let mounted = true;
         fetchURLs(idParams)
@@ -71,6 +75,11 @@ function UserScoreChart() {
                 </RadialBarChart>
             </ResponsiveContainer>
          </article>
+}
+
+UserScoreChart.propTypes = {
+    idParams: PropTypes.number,
+    userScore: PropTypes.array
 }
 
 export default UserScoreChart;

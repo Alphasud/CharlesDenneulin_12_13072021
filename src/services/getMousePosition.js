@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+/**
+ * Generates coordinates of mouse position on the screen
+ */
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 

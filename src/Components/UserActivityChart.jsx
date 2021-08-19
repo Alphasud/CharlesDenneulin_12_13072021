@@ -4,13 +4,17 @@ import { fetchURLs } from "../Services/fetchURLs";
 import { useParams } from "react-router-dom";
 import CustomizedLegendActivity from './CustomizedLegendActivity';
 import CustomTooltipActivity from './CustomTooltipActivity';
+import PropTypes from 'prop-types';
 
 function UserActivityChart() {
 
   const [userActivity, setUserActivity] = useState([]);
   const [error, setError] = useState([]);
-    const idParams = useParams().id;
-    
+  const idParams = useParams().id;
+  
+   /**
+   * Update the state with the fetched data
+   */
   useEffect(() => {
     let mounted = true;
     fetchURLs(idParams)
@@ -112,5 +116,11 @@ function UserActivityChart() {
       </ResponsiveContainer>
     </article>
 }
+
+UserActivityChart.propTypes = {
+  idParams: PropTypes.number,
+  userActivity: PropTypes.array,
+  sessions: PropTypes.array
+};
 
 export default UserActivityChart;

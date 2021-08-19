@@ -4,12 +4,16 @@ import { useParams } from "react-router-dom";
 import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import CustomTooltipTime from './CustomToolTipTime';
 import CustomCursorTime from './CustomCursorTime';
+import PropTypes from 'prop-types';
 
 function UserTimeChart() {
   const [userTime, setUserTime] = useState([]);
   const [error, setError] = useState([]);
   const idParams = useParams().id;
     
+   /**
+   * Update the state with the fetched data
+   */
   useEffect(() => {
     let mounted = true;
     fetchURLs(idParams)
@@ -87,5 +91,10 @@ function UserTimeChart() {
       </ResponsiveContainer>
     </article>
 }
+
+UserTimeChart.propTypes = {
+  idParams: PropTypes.number,
+  userTime: PropTypes.array
+};
 
 export default UserTimeChart;
