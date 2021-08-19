@@ -12,7 +12,7 @@ import ErrorPage from "./ErrorPage";
 function UserPage() {
 
     const [user, setUser] = useState([]);
-    const [error, setError] = useState([])
+    const [error, setError] = useState();
     const idParams = useParams().id;
     
     useEffect(() => {
@@ -37,49 +37,44 @@ function UserPage() {
     const protein = parseInt(user.map(el => el.keyData.proteinCount));
     const carbohydrate = parseInt(user.map(el => el.keyData.carbohydrateCount));
     const lipid = parseInt(user.map(el => el.keyData.lipidCount));
-    console.log(error);
-    if (error.length === 0) {
-        console.log('YES');
-    }
-    if (!error.length === 0) {
+    
+    if(error) {
         return <ErrorPage />;
     }
-    return <section className="user-page">
-        <UserInfo
-            userName={firstName}
-        />
-        <div className="user-page__graph">
-            <div className="user-page__graph__left">
-                <UserActivityChart />
-                <div className="user-page__graph__left__bottom">
-                    <UserTimeChart />
-                    <UserRadarChart />
-                    <UserScoreChart />
+        return <section className="user-page">
+                <UserInfo userName={firstName} />
+                <div className="user-page__graph">
+                    <div className="user-page__graph__left">
+                        <UserActivityChart />
+                        <div className="user-page__graph__left__bottom">
+                            <UserTimeChart />
+                            <UserRadarChart />
+                            <UserScoreChart />
+                        </div>
+                    </div>
+                    <div className="user-page__graph__right">
+                        <KeyData
+                            count={`${formattedCalories}kCal`}
+                            name="Calories"
+                            picture="energy"
+                        />
+                        <KeyData
+                            count={`${protein}g`}
+                            name="Proteines"
+                            picture="chicken"
+                        />
+                        <KeyData
+                            count={`${carbohydrate}g`}
+                            name="Glucides"
+                            picture="apple"
+                        />
+                        <KeyData
+                            count={`${lipid}g`}
+                            name="Lipides"
+                            picture="cheeseburger"
+                        />
+                    </div>
                 </div>
-            </div>
-            <div className="user-page__graph__right">
-                <KeyData
-                    count={`${formattedCalories}kCal`}
-                    name="Calories"
-                    picture="energy"
-                />
-                <KeyData
-                    count={`${protein}g`}
-                    name="Proteines"
-                    picture="chicken"
-                />
-                <KeyData
-                    count={`${carbohydrate}g`}
-                    name="Glucides"
-                    picture="apple"
-                />
-                <KeyData
-                    count={`${lipid}g`}
-                    name="Lipides"
-                    picture="cheeseburger"
-                />
-            </div>
-        </div>
     </section>
 
 }
