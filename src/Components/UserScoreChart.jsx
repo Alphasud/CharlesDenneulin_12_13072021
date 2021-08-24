@@ -13,9 +13,9 @@ function UserScoreChart(props) {
         <div className="user-page__graph__left__bottom__score-chart__background"></div>
         <div className="user-page__graph__left__bottom__score-chart__score">{userScore * 100}%</div>
         <div className="user-page__graph__left__bottom__score-chart__text">de votre<br></br>objectif</div>
-{/* https://recharts.org/en-US/api/ResponsiveContainer */}        
+{/** https://recharts.org/en-US/api/ResponsiveContainer */}        
         <ResponsiveContainer height="100%" width="100%">
-{/* https://recharts.org/en-US/api/RadialBarChart */}                
+{/** https://recharts.org/en-US/api/RadialBarChart */}                
                 <RadialBarChart
                     cx="50%"
                     cy="50%"
@@ -26,21 +26,21 @@ function UserScoreChart(props) {
                     startAngle={-270}
                     endAngle={90}
                     >
-{/* https://recharts.org/en-US/api/PolarAngleAxis */}          
+{/** https://recharts.org/en-US/api/PolarAngleAxis */}          
                 <PolarAngleAxis
                     type="number"
                     domain={[0, 100]}
                     angleAxisId={0}
                     tick={false}
                 />
-{/* https://recharts.org/en-US/api/RadialBar */}                
+{/** https://recharts.org/en-US/api/RadialBar */}                
                 <RadialBar
                     background={false}
                     clockWise={true}
                     dataKey="value"
                     cornerRadius={15}
                 />
-{/* https://recharts.org/en-US/api/Text */}
+{/** https://recharts.org/en-US/api/Text */}
                 <text
                     x={35}
                     y={25}

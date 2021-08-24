@@ -35,9 +35,9 @@ function UserActivityChart(props) {
   
   return <article className="user-page__graph__left__activity-chart">
       <h2 className="user-page__graph__left__activity-chart__title">Activité quotidienne</h2>
-{/* https://recharts.org/en-US/api/ResponsiveContainer */} 
+{/** https://recharts.org/en-US/api/ResponsiveContainer */} 
       <ResponsiveContainer width="100%" height="100%">
-{/* https://recharts.org/en-US/api/BarChart */}
+{/** https://recharts.org/en-US/api/BarChart */}
           <BarChart
             data={sessions}
             margin={{
@@ -49,16 +49,16 @@ function UserActivityChart(props) {
             barGap={10}
             barSize={10}
           >
-{/* https://recharts.org/en-US/api/CartesianGrid */}
+{/** https://recharts.org/en-US/api/CartesianGrid */}
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-{/* https://recharts.org/en-US/api/XAxis */}    
+{/** https://recharts.org/en-US/api/XAxis */}    
             <XAxis
               dataKey="day"
               tickLine={false}
               tick={{ fontSize: 14 }}
               dy={15}
             />
-{/* https://recharts.org/en-US/api/YAxis */}
+{/** https://recharts.org/en-US/api/YAxis */}
             <YAxis
               yAxisId="kilo"
               orientation="right"
@@ -75,16 +75,16 @@ function UserActivityChart(props) {
               hide={true}
               domain={[minCalories, maxCalories]}
             />
-{/* https://recharts.org/en-US/api/Tooltip */}
+{/** https://recharts.org/en-US/api/Tooltip */}
             <Tooltip
               cursor={{ fill: "#dfdfdf" }}
               content={<CustomTooltipActivity />}
             />
-{/* https://recharts.org/en-US/api/Legend */}        
+{/** https://recharts.org/en-US/api/Legend */}        
             <Legend
               content={<CustomizedLegendActivity />}
             />
-{/* https://recharts.org/en-US/api/Bar */}
+{/** https://recharts.org/en-US/api/Bar */}
             <Bar
               yAxisId="kilo"
               dataKey="kilogram"

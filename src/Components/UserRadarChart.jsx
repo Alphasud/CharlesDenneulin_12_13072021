@@ -17,17 +17,17 @@ function UserRadarChart(props) {
   };
     
     return <article className="user-page__graph__left__bottom__radar-chart">
-{/* https://recharts.org/en-US/api/ResponsiveContainer */}   
+{/** https://recharts.org/en-US/api/ResponsiveContainer */}   
             <ResponsiveContainer width="100%" height="100%">
-{/* https://recharts.org/en-US/api/RadarChart */}   
+{/** https://recharts.org/en-US/api/RadarChart */}   
                 <RadarChart outerRadius={70} data={performance} >
-{/* https://recharts.org/en-US/api/PolarGrid */}
+{/** https://recharts.org/en-US/api/PolarGrid */}
                     <PolarGrid />
-{/* https://recharts.org/en-US/api/PolarAngleAxis */}
+{/** https://recharts.org/en-US/api/PolarAngleAxis */}
                     <PolarAngleAxis dataKey="kind" stroke="#fff" tickLine={false} ticks={false} tick={{ fontSize: 9 }} />
-{/* https://recharts.org/en-US/api/Radar */}
+{/** https://recharts.org/en-US/api/Radar */}
                     <Radar dataKey="value" stroke="rgba(230, 0, 0, 0)" fill="#e60000" fillOpacity={0.6} />
-{/* https://recharts.org/en-US/api/Legend */}
+{/** https://recharts.org/en-US/api/Legend */}
                     <Legend />
                 </RadarChart>
             </ResponsiveContainer>

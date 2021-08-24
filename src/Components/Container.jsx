@@ -10,10 +10,7 @@ function Container() {
     const [allDatas, setAllDatas] = useState([]);
     const [error, setError] = useState();
     const idParams = parseInt(useParams().id);
-    
-    /**
-   * Update the state with the fetched data or an error message
-   */
+
     useEffect(() => {
         let mounted = true;
         fetchURLs(idParams)
