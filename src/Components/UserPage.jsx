@@ -1,59 +1,39 @@
+import React from "react";
 import UserInfo from "./UserInfo";
 import UserActivityChart from "./UserActivityChart";
 import UserTimeChart from "./UserTimeChart";
 import UserScoreChart from "./UserScoreChart";
 import UserRadarChart from "./UserRadarChart";
 import KeyData from "./KeyData";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchURLs } from "../Services/fetchURLs";
-import ErrorPage from "./ErrorPage";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-function UserPage() {
 
-    const [user, setUser] = useState([]);
-    const [error, setError] = useState();
-    const idParams = useParams().id;
+
+function UserPage(props) {
     
-    /**
-   * Update the state with the fetched data
-   */
-    useEffect(() => {
-        let mounted = true;
-        fetchURLs(idParams)
-            .then(items => {
-                if (mounted) {
-                    setUser([items[0].data])
-                }
-            })
-            .catch(items => {
-                if (mounted) {
-                    setError(items.message)
-                }
-            })
-        return () => mounted = false;
-    }, [idParams, error]);
-
-    const firstName = user.map(el => el.userInfos.firstName.toString());
-    const calories = parseInt(user.map(el => el.keyData.calorieCount));
+    const firstName = props.data[0].data.userInfos.firstName;
+    const calories = props.data[0].data.keyData.calorieCount;
     const formattedCalories = new Intl.NumberFormat('en-EN').format(calories);
-    const protein = parseInt(user.map(el => el.keyData.proteinCount));
-    const carbohydrate = parseInt(user.map(el => el.keyData.carbohydrateCount));
-    const lipid = parseInt(user.map(el => el.keyData.lipidCount));
+    const protein = props.data[0].data.keyData.proteinCount;
+    const carbohydrate = props.data[0].data.keyData.carbohydrateCount;
+    const lipid = props.data[0].data.keyData.lipidCount;
     
-    if(error) {
-        return <ErrorPage />;
-    }
+    const activityDatas = props.data[1].data.sessions;
+    const timeDatas = props.data[3].data.sessions;
+    const radarDatas = props.data[2].data.data;
+
+    let scoreDatas;
+    props.data[0].data.todayScore ? scoreDatas = props.data[0].data.todayScore : scoreDatas = props.data[0].data.score;
+    
         return <section className="user-page">
                 <UserInfo userName={firstName} />
                 <div className="user-page__graph">
                     <div className="user-page__graph__left">
-                        <UserActivityChart />
+                        <UserActivityChart data={activityDatas} />
                         <div className="user-page__graph__left__bottom">
-                            <UserTimeChart />
-                            <UserRadarChart />
-                            <UserScoreChart />
+                            <UserTimeChart data={timeDatas}/>
+                            <UserRadarChart data={radarDatas}/>
+                            <UserScoreChart data={parseFloat(scoreDatas)}/>
                         </div>
                     </div>
                     <div className="user-page__graph__right">
@@ -84,8 +64,7 @@ function UserPage() {
 }
 
 UserPage.propTypes = {
-    idParams: PropTypes.number,
-    user: PropTypes.array
+    data: PropTypes.array
 };
 
 export default UserPage;

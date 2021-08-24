@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function UserInfo(props) {
     
     return <article className='user-page__info'>
@@ -6,4 +8,6 @@ export default function UserInfo(props) {
     </article>
 }
 
-/*{user.map(el => el.firstName)}*/
+UserInfo.propTypes = {
+    userName: PropTypes.string
+};

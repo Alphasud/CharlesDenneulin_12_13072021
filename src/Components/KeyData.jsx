@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function keyData(props) {
 
     return <article className="user-page__graph__right__keyData">
@@ -10,5 +12,11 @@ function keyData(props) {
         </div>
     </article>
 }
+
+keyData.propTypes = {
+    name: PropTypes.string,
+    picture: PropTypes.string,
+    count: PropTypes.string,
+};
 
 export default keyData;

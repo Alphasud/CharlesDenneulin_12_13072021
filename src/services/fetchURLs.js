@@ -3,9 +3,9 @@
  * @param   {number} id <id of user>
  * @return  {array}     <array of data relative to user>
  */
-
 async function fetchURLs(id) {
-    let allDatas = [];
+  let allDatas = [];
+  let isError = false;
     try {
       const datas = await Promise.all([
         fetch(`http://localhost:3000/user/${id}`).then((response) => response.json()),
@@ -15,13 +15,16 @@ async function fetchURLs(id) {
       ]);
 
       for (const data of datas) {
-          allDatas.push(data);
+        allDatas.push(data);
       }
 
     } catch (error) {
       console.log(error);
+      isError = true;
     }
-    return allDatas;
+  
+  const result = isError ? "error" : allDatas;
+  return result;
   }
 
 export { fetchURLs } ;

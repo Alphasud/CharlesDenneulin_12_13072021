@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /**
- * Generates coordinates of mouse position on the screen
+ * Generates coordinates of mouse position on the screen, used in 'CuztomizedToolTipTime component'.
  */
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
