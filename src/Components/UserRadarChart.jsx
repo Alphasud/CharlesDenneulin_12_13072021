@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 function UserRadarChart(props) {
 
     const performance = props.data;
+    /* Manually updating values in the object to match mockup design */
     for (let x = 0; x < performance.length; x++) {
     performance[0].kind = "Cardio";
     performance[1].kind = "Energie";
@@ -16,13 +17,19 @@ function UserRadarChart(props) {
   };
     
     return <article className="user-page__graph__left__bottom__radar-chart">
+{/* https://recharts.org/en-US/api/ResponsiveContainer */}   
             <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart outerRadius={70} data={performance} >
-                        <PolarGrid />
-                        <PolarAngleAxis dataKey="kind" stroke="#fff" tickLine={false} ticks={false} tick={{ fontSize: 9 }} />
-                        <Radar dataKey="value" stroke="rgba(230, 0, 0, 0)" fill="#e60000" fillOpacity={0.6} />
-                        <Legend />
-                    </RadarChart>
+{/* https://recharts.org/en-US/api/RadarChart */}   
+                <RadarChart outerRadius={70} data={performance} >
+{/* https://recharts.org/en-US/api/PolarGrid */}
+                    <PolarGrid />
+{/* https://recharts.org/en-US/api/PolarAngleAxis */}
+                    <PolarAngleAxis dataKey="kind" stroke="#fff" tickLine={false} ticks={false} tick={{ fontSize: 9 }} />
+{/* https://recharts.org/en-US/api/Radar */}
+                    <Radar dataKey="value" stroke="rgba(230, 0, 0, 0)" fill="#e60000" fillOpacity={0.6} />
+{/* https://recharts.org/en-US/api/Legend */}
+                    <Legend />
+                </RadarChart>
             </ResponsiveContainer>
         </article>
 }

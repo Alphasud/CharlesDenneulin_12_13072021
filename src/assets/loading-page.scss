@@ -1,0 +1,24 @@
+.loading {
+    height: 70rem;
+    color: #000;
+    margin-left: 9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+
+    &__circle {
+        position: absolute;
+        border: 2.5px solid #f3f3f3;
+        border-top: 2.5px solid #e60000;
+        border-radius: 50%;
+        width: 11rem;
+        height: 11rem;
+        animation: spin 1.5s linear infinite;
+    }
+
+    @keyframes spin {
+        0%  { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}

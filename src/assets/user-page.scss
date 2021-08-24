@@ -1,3 +1,4 @@
+/// GENERAL LAYOUT ///
 .user-page {
     width: 80%;
     color: black;
@@ -32,6 +33,8 @@
         }
     }
 }
+
+/// ACTIVITY CHART ///
 .user-page__graph__left__activity-chart {
     height: 55%;
     margin-bottom: 2rem;
@@ -46,11 +49,52 @@
     position: absolute;
     top: 3rem;
     left: 4rem;
-    font-size: 1.2rem;
-    
+    font-size: 1.2rem;   
 }
 
+////CUSTOM TOOLTIPS FOR ACTIVITY CHARTS
+.custom-tooltip-activity {
+    display: flex;
+    flex-direction: column;
+}
+.label-activity {
+    text-align: center;
+    padding: 1.8rem 1rem;
+    color: #fff;
+    font-weight: 500;
+    background-color: #e60000;
+}
 
+/////ACTIVITY CHART CUSTOM LEGEND
+.legend {
+    position: absolute;
+    bottom: 24rem;
+    right: 2rem;
+    display: flex;
+}
+
+.header-legend {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.circle-red {
+  background: #ff0000;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+.circle-black {
+  background: #000;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+///TIME CHART, RADAR CHART & SCORE CHART ///
 .user-page__graph__left__bottom {
     height: 39%;
     display: flex;
@@ -111,9 +155,25 @@
         text-align: center;
     }
 }
+/// SCORE CHART LABEL ///
+.progress-label {
+    font-weight: 500;
+}
+.progress-score {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+.progress-score-label {
+    font-weight: 500;
+    color: #fff;
+}
+/// CUSTOM TOOLTIPS FOR TIME CHARTS ///
+.label {
+    padding: .5rem;
+    background-color: #fff;
+}
 
-/////KEY DATA (RIGHT SIDE)
-
+/////KEY DATA (RIGHT SIDE) ///
 .user-page__graph__right__keyData {
     background-color: #fbfbfb;
     height: 25%;
@@ -177,63 +237,6 @@
 }
 
 
-///// SCORE CHART
-.progress-label {
-    font-weight: 500;
-}
-.progress-score {
-    font-weight: 600;
-    font-size: 1.8rem;
-}
-.progress-score-label {
-    font-weight: 500;
-    color: #fff;
-}
-////CUSTOM TOOLTIPS FOR TIME CHARTS
-.label {
-    padding: .5rem;
-    background-color: #fff;
-}
 
-////CUSTOM TOOLTIPS FOR ACTIVITY CHARTS
-.custom-tooltip-activity {
-    display: flex;
-    flex-direction: column;
-}
-.label-activity {
-    text-align: center;
-    padding: 1.8rem 1rem;
-    color: #fff;
-    font-weight: 500;
-    background-color: #e60000;
-}
 
-/////ACTIVITY CHART CUSTOM LEGEND
-.legend {
-    position: absolute;
-    bottom: 24rem;
-    right: 2rem;
-    display: flex;
-}
-
-.header-legend {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-}
-
-.circle-red {
-  background: #ff0000;
-  height: 8px;
-  width: 8px;
-  border-radius: 50%;
-  margin: 0 10px;
-}
-.circle-black {
-  background: #000;
-  height: 8px;
-  width: 8px;
-  border-radius: 50%;
-  margin: 0 10px;
-}
 

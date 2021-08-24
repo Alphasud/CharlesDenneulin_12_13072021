@@ -8,6 +8,7 @@ function UserActivityChart(props) {
 
   
   const sessions = props.data;
+  /* Manually updating values in the object to match mockup design */
   for (let x = 0; x < sessions.length; x++) {
     sessions[0].day = "1";
     sessions[1].day = "2";
@@ -34,7 +35,9 @@ function UserActivityChart(props) {
   
   return <article className="user-page__graph__left__activity-chart">
       <h2 className="user-page__graph__left__activity-chart__title">Activité quotidienne</h2>
+{/* https://recharts.org/en-US/api/ResponsiveContainer */} 
       <ResponsiveContainer width="100%" height="100%">
+{/* https://recharts.org/en-US/api/BarChart */}
           <BarChart
             data={sessions}
             margin={{
@@ -46,50 +49,54 @@ function UserActivityChart(props) {
             barGap={10}
             barSize={10}
           >
+{/* https://recharts.org/en-US/api/CartesianGrid */}
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-
-                <XAxis
-                    dataKey="day"
-                    tickLine={false}
-                    tick={{ fontSize: 14 }}
-                    dy={15}
-                />
-                <YAxis
-                    yAxisId="kilo"
-                    orientation="right"
-                    interval="number"
-                    allowDecimals={false}
-                    tickLine={false}
-                    axisLine={false}
-                    hide={false}
-                    tick={{ fontSize: 14 }}
-                    domain={[minKilo, maxKilo]}
-                />
-                <YAxis
-                    yAxisId="cal"
-                    hide={true}
-                    domain={[minCalories, maxCalories]}
-                />
-                <Tooltip
-                  cursor={{ fill: "#dfdfdf" }}
-                  content={<CustomTooltipActivity />}
-                />
-        
-                        <Legend
-                          content={<CustomizedLegendActivity />}
-                        />
-                        <Bar
-                            yAxisId="kilo"
-                            dataKey="kilogram"
-                            radius={[50, 50, 0, 0]}
-                            fill="#000"
-                        />
-                        <Bar
-                            yAxisId="cal"
-                            dataKey="calories"
-                            fill="#e60000"
-                            radius={[50, 50, 0, 0]}
-                        />
+{/* https://recharts.org/en-US/api/XAxis */}    
+            <XAxis
+              dataKey="day"
+              tickLine={false}
+              tick={{ fontSize: 14 }}
+              dy={15}
+            />
+{/* https://recharts.org/en-US/api/YAxis */}
+            <YAxis
+              yAxisId="kilo"
+              orientation="right"
+              interval="number"
+              allowDecimals={false}
+              tickLine={false}
+              axisLine={false}
+              hide={false}
+              tick={{ fontSize: 14 }}
+              domain={[minKilo, maxKilo]}
+            />
+            <YAxis
+              yAxisId="cal"
+              hide={true}
+              domain={[minCalories, maxCalories]}
+            />
+{/* https://recharts.org/en-US/api/Tooltip */}
+            <Tooltip
+              cursor={{ fill: "#dfdfdf" }}
+              content={<CustomTooltipActivity />}
+            />
+{/* https://recharts.org/en-US/api/Legend */}        
+            <Legend
+              content={<CustomizedLegendActivity />}
+            />
+{/* https://recharts.org/en-US/api/Bar */}
+            <Bar
+              yAxisId="kilo"
+              dataKey="kilogram"
+              radius={[50, 50, 0, 0]}
+              fill="#000"
+            />
+            <Bar
+              yAxisId="cal"
+              dataKey="calories"
+              fill="#e60000"
+              radius={[50, 50, 0, 0]}
+            />
         </BarChart>
       </ResponsiveContainer>
     </article>

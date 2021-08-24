@@ -12,7 +12,7 @@ function Container() {
     const idParams = parseInt(useParams().id);
     
     /**
-   * Update the state with the fetched data
+   * Update the state with the fetched data or an error message
    */
     useEffect(() => {
         let mounted = true;
