@@ -1,3 +1,7 @@
+/**
+ * Component that build the header and navigation.
+ * @component
+*/
 export default function Header() {
 
     return <header className="header">

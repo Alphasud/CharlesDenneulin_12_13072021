@@ -4,6 +4,10 @@ import CustomTooltipTime from './CustomToolTipTime';
 import CustomCursorTime from './CustomCursorTime';
 import PropTypes from 'prop-types';
 
+/**
+ * Component that build the user's session time chart.
+ * @component
+  */
 function UserTimeChart(props) {
 /* Manually updating values in the object to match mockup design */
   for (let x = 0; x < props.data.length; x++) {
@@ -72,6 +76,9 @@ function UserTimeChart(props) {
 }
 
 UserTimeChart.propTypes = {
+  /**
+ * User's data
+  */
     data: PropTypes.array
 };
 

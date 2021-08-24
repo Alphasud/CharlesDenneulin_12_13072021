@@ -5,6 +5,10 @@ import UserPage from "./UserPage";
 import ErrorPage from "./ErrorPage";
 import LoadingPage from "./LoadingPage";
 
+/**
+ * Component that update the states with fetched datas and display an error page, a loading page, or userpage accordingly.
+ * @component
+  */
 function Container() {
 
     const [allDatas, setAllDatas] = useState([]);

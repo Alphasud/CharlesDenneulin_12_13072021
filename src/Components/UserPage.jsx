@@ -8,7 +8,10 @@ import KeyData from "./KeyData";
 import PropTypes from "prop-types";
 
 
-
+/**
+ * Component that build the user 'dashboard'.
+ * @component
+  */
 function UserPage(props) {
     
     const firstName = props.data[0].data.userInfos.firstName;
@@ -64,6 +67,9 @@ function UserPage(props) {
 }
 
 UserPage.propTypes = {
+    /**
+ * User's data
+  */
     data: PropTypes.array
 };
 

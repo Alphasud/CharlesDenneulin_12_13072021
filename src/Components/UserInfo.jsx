@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
-
+/**
+ * Component that display the user's name.
+ * @component
+  */
 export default function UserInfo(props) {
     
     return <article className='user-page__info'>
@@ -9,5 +12,8 @@ export default function UserInfo(props) {
 }
 
 UserInfo.propTypes = {
+    /**
+ * User's name
+  */
     userName: PropTypes.string
 };

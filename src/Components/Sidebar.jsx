@@ -1,5 +1,8 @@
 export default function Sidebar() {
-
+/**
+ * Component that build the side bar.
+ * @component
+  */
     return <aside className="sidebar">
         <div className="button-list">
             <button>

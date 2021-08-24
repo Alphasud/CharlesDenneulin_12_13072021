@@ -2,7 +2,10 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContain
 import React from "react";
 import PropTypes from "prop-types";
 
-
+/**
+ * Component that build the user's radar chart.
+ * @component
+  */
 function UserRadarChart(props) {
 
     const performance = props.data;
@@ -35,6 +38,9 @@ function UserRadarChart(props) {
 }
 
 UserRadarChart.propTypes = {
+    /**
+ * User's data
+  */
     data: PropTypes.array
 };
 

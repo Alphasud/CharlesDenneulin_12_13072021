@@ -2,6 +2,10 @@ import React from "react";
 import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
 import PropTypes from "prop-types";
 
+/**
+ * Component that build the user's score.
+ * @component
+  */
 function UserScoreChart(props) {
 
     const userScore = props.data;
@@ -56,6 +60,9 @@ function UserScoreChart(props) {
 }
 
 UserScoreChart.propTypes = {
+    /**
+ * User's score
+  */
     data: PropTypes.number
 };
 
