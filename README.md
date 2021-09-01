@@ -42,8 +42,8 @@ You will also see any lint errors in the console.
     - `http://localhost:3001/12`
 
 ## Documentation
-Documentation is available throught the project' code and in a dedicated project folder. 
-In the 'docs' folder, you'll find index.html files that you can open in a browser for a better reading experience.
+Documentation is available throught the project's code and in a dedicated project folder. 
+In the 'docs' folder, you'll find an index.html files that you can open in a browser for a better reading experience.
 
 
 

@@ -4,6 +4,7 @@ import { fetchURLs } from "../Services/fetchURLs";
 import UserPage from "./UserPage";
 import ErrorPage from "./ErrorPage";
 import LoadingPage from "./LoadingPage";
+import FourOFour from "./FourOFour";
 
 /**
  * Component that update the states with fetched datas and display an error page, a loading page, or userpage accordingly.
@@ -30,6 +31,8 @@ function Container() {
             })
         return () => mounted = false;
     }, [idParams, error]);
+
+    if (idParams !== 12 && idParams !== 18) { return <FourOFour /> }
 
     if(allDatas === "error") { return <ErrorPage /> }
 
